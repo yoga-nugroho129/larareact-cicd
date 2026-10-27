@@ -61,12 +61,6 @@
         "lint:check": [
             "pint --parallel --test"
         ],
-        "ci:check": [
-            "Composer\\Config::disableProcessTimeout",
-            "npm run check",
-            "npm run types:check",
-            "@test"
-        ],
         "types:check": [
             "phpstan analyse --memory-limit=512M"
         ],

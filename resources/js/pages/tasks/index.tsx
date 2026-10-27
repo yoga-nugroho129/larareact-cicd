@@ -114,11 +114,11 @@ export default function TaskIndex({ tasks, filters, counts }: TaskIndexProps) {
                                 className="hidden gap-1 text-[11px] font-normal sm:inline-flex"
                             >
                                 <Sparkles className="size-3 text-primary" />
-                                <span>CI/CD Pipeline Tracker</span>
+                                <span>Team Workspace</span>
                             </Badge>
                         </div>
                         <p className="text-sm text-muted-foreground">
-                            Organize, track progress, and deploy CI/CD tasks
+                            Organize, track progress, and manage tasks
                             efficiently across your team.
                         </p>
                     </div>

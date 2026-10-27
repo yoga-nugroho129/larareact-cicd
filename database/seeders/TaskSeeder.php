@@ -21,36 +21,36 @@ class TaskSeeder extends Seeder
 
         $tasks = [
             [
-                'title' => 'Setup CI/CD Pipeline with Jenkins',
-                'description' => 'Configure automated testing, building, and deployment pipeline using Jenkinsfile.',
+                'title' => 'Design landing page wireframes and user flow',
+                'description' => 'Create Figma mockups for desktop and mobile layouts following brand guidelines.',
                 'status' => 'in_progress',
                 'priority' => 'high',
                 'due_date' => now()->addDays(3)->format('Y-m-d'),
             ],
             [
-                'title' => 'Containerize Application with Docker',
-                'description' => 'Write multi-stage Dockerfile and docker-compose.yml for web, redis, and queue workers.',
+                'title' => 'Implement user authentication with Google OAuth',
+                'description' => 'Enable social login so users can sign in with their Google workspace accounts.',
                 'status' => 'todo',
                 'priority' => 'high',
                 'due_date' => now()->addDays(7)->format('Y-m-d'),
             ],
             [
-                'title' => 'Deploy to Kubernetes Cluster',
-                'description' => 'Create Kubernetes manifests including Deployments, Services, Ingress, and ConfigMaps.',
+                'title' => 'Optimize database queries for task dashboard',
+                'description' => 'Add proper indexing on frequent filter columns and optimize eager loading relationships.',
                 'status' => 'todo',
                 'priority' => 'medium',
                 'due_date' => now()->addDays(14)->format('Y-m-d'),
             ],
             [
-                'title' => 'Design Task Tracker Database Schema',
-                'description' => 'Create migrations for tasks and task_attachments tables with foreign key constraints.',
+                'title' => 'Design task management database schema',
+                'description' => 'Create relational tables for tasks and task attachments with foreign key constraints.',
                 'status' => 'done',
                 'priority' => 'high',
                 'due_date' => now()->subDay()->format('Y-m-d'),
             ],
             [
-                'title' => 'Write Feature Tests for Task CRUD',
-                'description' => 'Cover all endpoints with PHPUnit tests to ensure pipeline quality gate passes.',
+                'title' => 'Implement drag and drop for Kanban columns',
+                'description' => 'Enhance user experience by allowing quick status transitions via interactive cards.',
                 'status' => 'todo',
                 'priority' => 'low',
                 'due_date' => now()->addDays(5)->format('Y-m-d'),
@@ -64,8 +64,8 @@ class TaskSeeder extends Seeder
             if ($task->priority === 'high') {
                 TaskAttachment::factory()->create([
                     'task_id' => $task->id,
-                    'file_name' => 'architecture-diagram.png',
-                    'file_path' => 'attachments/sample-architecture.png',
+                    'file_name' => 'wireframe-mockup.png',
+                    'file_path' => 'attachments/sample-wireframe.png',
                     'mime_type' => 'image/png',
                     'file_size' => 1024 * 350, // 350 KB
                 ]);

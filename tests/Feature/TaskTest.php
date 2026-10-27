@@ -51,23 +51,23 @@ test('authenticated users can search tasks by title or description', function ()
 
     Task::factory()->create([
         'user_id' => $user->id,
-        'title' => 'Setup Jenkins CI Pipeline',
-        'description' => 'Automate deployment on commit',
+        'title' => 'Design Landing Page Wireframes',
+        'description' => 'Create desktop and mobile mockups in Figma',
     ]);
 
     Task::factory()->create([
         'user_id' => $user->id,
-        'title' => 'Deploy to Kubernetes',
-        'description' => 'Write helm chart',
+        'title' => 'Setup OAuth Authentication',
+        'description' => 'Configure Google sign in provider',
     ]);
 
     $this->actingAs($user)
-        ->get(route('tasks.index', ['search' => 'Jenkins']))
+        ->get(route('tasks.index', ['search' => 'Wireframes']))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
             ->component('tasks/index')
             ->has('tasks', 1)
-            ->where('tasks.0.title', 'Setup Jenkins CI Pipeline')
+            ->where('tasks.0.title', 'Design Landing Page Wireframes')
         );
 });
 
@@ -75,8 +75,8 @@ test('authenticated users can create a task', function () {
     $user = User::factory()->create();
 
     $payload = [
-        'title' => 'Configure Dockerfile',
-        'description' => 'Multi-stage docker build for PHP',
+        'title' => 'Setup User Notification Preferences',
+        'description' => 'Allow users to configure email and in-app alerts',
         'status' => 'todo',
         'priority' => 'high',
         'due_date' => now()->addDays(5)->format('Y-m-d'),
@@ -89,7 +89,7 @@ test('authenticated users can create a task', function () {
 
     $this->assertDatabaseHas('tasks', [
         'user_id' => $user->id,
-        'title' => 'Configure Dockerfile',
+        'title' => 'Setup User Notification Preferences',
         'status' => 'todo',
         'priority' => 'high',
     ]);
