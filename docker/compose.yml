@@ -1,0 +1,26 @@
+services:
+    app:
+        image: larareact-full:v2
+        container_name: larareact
+        ports:
+            - "8000:8000"
+        environment:
+            APP_ENV: production
+            APP_DEBUG: false
+            APP_KEY: ${APP_KEY}
+
+            DB_CONNECTION: mysql
+            DB_HOST: mysql
+            DB_PORT: 3306
+            DB_DATABASE: larareact-db
+            DB_USERNAME: root
+            DB_PASSWORD:
+
+        command: php artisan serve --host=0.0.0.0 --port=8000
+
+    mysql:
+        image: mysql:8.4
+        container_name: larareact-mysql
+        environment:
+            MYSQL_DATABASE: larareact-db
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
