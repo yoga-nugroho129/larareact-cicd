@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/yoga-nugroho129/larareact-cicd.git'
+                
+                sh 'cp .env.example .env'
+                sh 'php artisan key:generate'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'composer install'
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'php artisan test'
+            }
+        }
+    }
+}
