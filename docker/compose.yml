@@ -1,3 +1,9 @@
+# ==============================================================================
+# DRILL 2: Dockerize Application
+# Learning: Multi-container orchestration (Laravel App + MySQL 8.4)
+# Status  : Learning Material / Lab
+# ==============================================================================
+
 services:
     app:
         image: larareact-full:v2

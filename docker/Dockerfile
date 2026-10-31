@@ -1,3 +1,9 @@
+# ==============================================================================
+# DRILL 2: Dockerize Application
+# Learning: Containerizing Laravel + Inertia.js + React (CLI & Assets Build)
+# Status  : Learning Material / Lab
+# ==============================================================================
+
 FROM php:8.4-cli
 
 WORKDIR /var/www
