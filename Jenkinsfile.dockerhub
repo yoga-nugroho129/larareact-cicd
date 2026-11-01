@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'yoganugroho120/larareact-cicd'
+        DOCKER_IMAGE = 'yoganugroho129/larareact-cicd'
         IMAGE_TAG = 'v2'
     }
 
