@@ -19,7 +19,7 @@ COPY . .
 
 RUN composer install \
     --no-dev \
-    --optimze-autoloader
+    --optimize-autoloader
 
 RUN npm ci \
     && npm run build
