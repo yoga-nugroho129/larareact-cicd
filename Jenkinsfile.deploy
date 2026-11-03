@@ -62,8 +62,8 @@ pipeline {
             steps {
                 sh '''
                     set -e
-                    cd /home/ubuntu/larareact-cicd \
-                    docker compose pull \
+                    cd /home/ubuntu/larareact-cicd 
+                    docker compose pull 
                     docker compose up -d
                 '''
             }
