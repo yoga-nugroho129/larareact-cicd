@@ -4,7 +4,7 @@
 
 services:
     laravel:
-        image: larareact-cicd:v4
+        image: larareact-cicd:laravel-v1
         container_name: larareact
         restart: unless-stopped
 
