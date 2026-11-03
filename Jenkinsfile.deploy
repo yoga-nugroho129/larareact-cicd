@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                     docker build \
                         --target nginx \
-                        -t yoganugroho129/larareact-cicd:nginxv1 \
+                        -t yoganugroho129/larareact-cicd:nginx-v1 \
                         .
                 '''
             }
