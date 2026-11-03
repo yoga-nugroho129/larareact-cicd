@@ -4,7 +4,7 @@
 
 services:
     laravel:
-        image: larareact-cicd:laravel-v1
+        image: yoganugroho129/larareact-cicd:laravel-v1
         container_name: larareact
         restart: unless-stopped
 
@@ -25,7 +25,7 @@ services:
                 condition: service_healthy
 
     nginx:
-        image: larareact-cicd:nginx-v1
+        image: yoganugroho129/larareact-cicd:nginx-v1
         container_name: larareact-nginx
         restart: unless-stopped
 

@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Laravel Image') {
+            steps {
+                sh '''
+                    docker build \
+                        --target laravel \
+                        -t yoganugroho129/larareact-cicd:laravel-v1 \
+                        .
+                '''
+            }
+        }
+
+        stage('Build Nginx Image') {
+            steps {
+                sh '''
+                    docker build \
+                        --target nginx \
+                        -t yoganugroho129/larareact-cicd:nginxv1 \
+                        .
+                '''
+            }
+        }
+    }
+
+}
