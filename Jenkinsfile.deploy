@@ -13,7 +13,7 @@ pipeline {
                 sh '''
                     docker build \
                         --target laravel \
-                        -t yoganugroho129/larareact-cicd:laravel-v1 \
+                        -t yoganugroho129/larareact-cicd:laravel-v2 \
                         .
                 '''
             }
@@ -24,8 +24,36 @@ pipeline {
                 sh '''
                     docker build \
                         --target nginx \
-                        -t yoganugroho129/larareact-cicd:nginx-v1 \
+                        -t yoganugroho129/larareact-cicd:nginx-v2 \
                         .
+                '''
+            }
+        }
+
+        stage('Docker Login') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub-credentials',
+                        usernameVariable: 'DOCKER_USERNAME',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )
+                ]) {
+                    sh '''
+                        echo "$DOCKER_PASSWORD" | \
+                        docker login \
+                        -u "$DOCKER_USERNAME" \
+                        --password-stdin
+                    '''
+                }
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                sh '''
+                    docker push yoganugroho129/larareact-cicd:laravel-v2
+                    docker push yoganugroho129/larareact-cicd:nginx-v2
                 '''
             }
         }
