@@ -61,6 +61,7 @@ pipeline {
         stage('Deploy to VPS') {
             steps {
                 sh '''
+                    set -e
                     cd /home/ubuntu/larareact-cicd \
                     docker compose pull \
                     docker compose up -d
