@@ -20,15 +20,18 @@ services:
             DB_USERNAME: ${DB_USERNAME}
             DB_PASSWORD: ${DB_PASSWORD}
 
+        depends_on:
+            mysql:
+                condition: service_healthy
+
     nginx:
-        image: nginx:alpine
+        image: larareact-cicd:nginx-v1
         container_name: larareact-nginx
         restart: unless-stopped
+
         ports:
             - "80:80"
-        volumes:
-            - ./public:/var/www/public:ro
-            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
         depends_on:
             - laravel
 
@@ -45,6 +48,22 @@ services:
 
         volumes:
             - mysql-data:/var/lib/mysql
+
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "mysqladmin",
+                    "ping",
+                    "-h",
+                    "localhost",
+                    "-u",
+                    "root",
+                    "-p${MYSQL_ROOT_PASSWORD}",
+                ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
 
 volumes:
     mysql-data:
