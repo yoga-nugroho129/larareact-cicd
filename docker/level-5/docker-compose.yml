@@ -1,6 +1,6 @@
 # ==============================================================================
-# DRILL 5: Jenkins → Docker Hub → Deploy to VPS
-# Learning: Multi-container orchestration (Laravel PHP-FPM + Nginx + MySQL 8.4)
+# DRILL 5: Dockerize Application with Nginx
+# Learning: Multi-container orchestration (Laravel App + MySQL 8.4)
 # Status  : Learning Material / Lab
 # ==============================================================================
 
@@ -69,4 +69,3 @@ services:
 
 volumes:
     mysql-data:
-
