@@ -28,6 +28,10 @@ spec:
           image: yoganugroho129/larareact-cicd:laravel-v1
           imagePullPolicy: IfNotPresent
 
+          envFrom:
+            - secretRef:
+                name: larareact-secret
+
           ports:
             - containerPort: 9000
 
