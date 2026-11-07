@@ -19,6 +19,9 @@ spec:
         app: larareact
 
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: vm-18-187-ubuntu
+
       containers:
         # Laravel PHP-FPM
         - name: laravel
