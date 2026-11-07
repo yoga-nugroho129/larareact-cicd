@@ -38,7 +38,7 @@ spec:
 
         # Nginx
         - name: nginx
-          image: yoganugroho129/larareact-cicd:nginx-v1
+          image: yoganugroho129/larareact-cicd:nginx-v3
           imagePullPolicy: IfNotPresent
 
           ports:
