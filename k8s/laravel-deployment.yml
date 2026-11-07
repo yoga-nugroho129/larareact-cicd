@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: larareact
+  labels:
+    app: larareact
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: larareact
+
+  template:
+    metadata:
+      labels:
+        app: larareact
+
+    spec:
+      containers:
+        # Laravel PHP-FPM
+        - name: laravel
+          image: yoganugroho129/larareact-cicd:laravel-v1
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 9000
+
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+
+        # Nginx
+        - name: nginx
+          image: yoganugroho129/larareact-cicd:nginx-v1
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
