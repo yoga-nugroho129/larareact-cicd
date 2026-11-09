@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'docker:cli'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            args '--group-add 988 -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
 
